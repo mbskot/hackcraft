@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : ElegantBlue
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20120108
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<link href='http://fonts.googleapis.com/css?family=Oswald&subset=latin,latin-ext' rel='stylesheet' type='text/css' />
+		<link href="{$basePath}/css/screen.css" rel="stylesheet" type="text/css" media="all" />
+		<script type="text/javascript" src="{$basePath}/js/jquery-1.6.2.min.js"></script>
+		<script type="text/javascript" src="{$basePath}/js/netteForms.js"></script>
+		<script type="text/javascript" src="{$basePath}/js/jquery.nette.js"></script>
+		<script type="text/javascript" src="{$basePath}/js/jquery.mbskot.js"></script>
+		{block #head}{/block}
+		<title>{$page[name]}</title>
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="header-wrapper">
+				<div id="header">
+					<div id="logo">
+						<h1><a href="#" class="shadow">Hackcraft</a></h1>
+						<p class="shadow">extends creativity</p>
+					</div>
+				</div>
+			</div>
+			<!-- end #header -->
+			<div id="menu-wrapper">
+				<div id="menu">
+					<ul>
+						<li {ifCurrent :Homepage:$presenterName:default}class="current"{/ifCurrent}><a n:href=":Homepage:$presenterName:default">Úvod</a></li>
+						<li {ifCurrent :Category:$presenterName:default, $category->slug}class="current"{/ifCurrent} n:foreach="$categories as $category"><a n:href=":Category:$presenterName:default, $category->slug">{$category->name}</a></li>
+					</ul>
+				</div>
+			</div>
+			<!-- end #menu -->
+			<div id="page">
+				<div id="page-bgtop">
+					<div id="page-bgbtm">
+						<div id="page-content">
+							<div id="content">
+								{snippet flashMessages}
+									<div n:foreach="$flashes as $flash" class="flash message {$flash->type}">{$flash->message}</div>
+								{/snippet}
+								<!--// todo:<br>
+									- dorobit ArticleForm a CategoryForm
+								-->
+								{include #content}
+								<div style="clear: both;">&nbsp;</div>
+							</div>
+							<!-- end #content -->
+							<div id="sidebar">
+								<ul>
+									<li>
+										<h3>Kategórie</h3>
+										<ul>
+											<li><a n:href="Category:create">Vytvoriť novú kategóriu</a></li>
+										</ul>
+									</li>
+									<li>
+										<h3>Články</h3>
+										<ul>
+											<li><a n:href="Article:create">Vytvoriť nový článok</a></li>
+										</ul>
+									</li>
+									<li>
+										<h3>Užívatelia</h3>
+										<ul>
+											<li><a href="#">Správa užívateľov</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+							<!-- end #sidebar -->
+						</div>
+						<div style="clear: both;">&nbsp;</div>
+					</div>
+				</div>
+			</div>
+			<!-- end #page -->
+		</div>
+		<div id="footer">
+			<p>Copyright (c) 2012 Sitename.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/"> CSS Templates</a>.</p>
+		</div>
+		<!-- end #footer -->
+	</body>
+</html>

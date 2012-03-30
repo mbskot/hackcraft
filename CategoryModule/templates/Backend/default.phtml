@@ -1,0 +1,14 @@
+{block #content}
+<div class="category">
+	<h2>{$category->name}</h2>
+	<div n:foreach="$articles as $article" class="article">
+		{control article-$article->id}
+	</div>
+	<div class="toolsMenu">
+		<a n:href="Article:create, $category->id">Pridať článok</a> |
+		<a n:href="edit, $category->slug">Editovať</a> |
+		<a n:href="delete!, $category->slug">Zmazať</a>
+	</div>
+</div>
+{control paginator}
+{/block}

@@ -1,0 +1,11 @@
+{var $link = $control->presenter->link(':Article:Frontend:default', $article->slug)}
+<div class="article annotation">
+	<h3><a href="{$link}">{$article->title}</a></h3>
+	<p class="meta">
+		<a href="{plink User:, $article->author->username}">{$article->author->username}</a>&nbsp;&nbsp;&bull;&nbsp;&nbsp;{$article->published|date:'j.n.Y'}&nbsp;&nbsp;&bull;&nbsp;&nbsp;<a href="{$link}#comments" class="comments">Komentáre ({$article->comments->count()})</a>&nbsp;&nbsp;&bull;&nbsp;&nbsp;<a href="{$link}" class="permalink">Celý článok</a>
+	</p>
+	<div class="entry">
+		{$article->content|striptags|truncate:300}
+	</div>
+</div>
+

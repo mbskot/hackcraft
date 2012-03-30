@@ -1,0 +1,14 @@
+{block #content}
+<div class="article">
+	<h2 class="title">{$article->title}</h2>
+		<p class="meta">
+			Autor: <a href="#">{$article->author->username}</a>&nbsp;&nbsp;&bull;&nbsp;&nbsp;{$article->published|date:'j.n.Y'}&nbsp;&nbsp;&bull;&nbsp;&nbsp;<a n:href="Article:default#comments, $article->slug" class="comments" n:snippet="commentsCount">Komentáre ({count($article->comments)})</a>
+		</p>
+	<div class="content">
+		{!$article->content}
+	</div>
+	<div id="comments">
+		{control comments}
+	</div>
+</div>
+{/block}

@@ -1,0 +1,6 @@
+{block #content}
+<div n:foreach="$articles as $article">
+	{control article-$article->id}
+</div>
+{control paginator}
+{/block}

@@ -1,0 +1,9 @@
+{block #content}
+<div>
+	<h2>{$userEntity->username}</h2>
+	<div n:foreach="$articles as $article" class="article">
+		{control article-$article->id}
+	</div>
+</div>
+{control paginator}
+{/block}

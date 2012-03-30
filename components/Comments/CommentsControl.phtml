@@ -1,0 +1,26 @@
+<div class="comments">
+	<h3>Komentáre:</h3>
+	<div n:foreach="$comments as $comment" id="comment{$comment->id}" class="comment">
+		<div class="meta">
+			<b>{$comment->username}</b>&nbsp;&nbsp;&bull;&nbsp;
+			{$comment->sent|date:'j.n.Y, H:i'}&nbsp;&nbsp;&bull;&nbsp;
+			<a class="ajax delete" data-confirm="Naozaj chcete zmazať tento komentár?" data-id="comment{$comment->id}" n:href="delete!, $comment->id">zmazať</a>
+		</div>
+		<p>{$comment->content}</p>
+	</div>
+	
+	{var $form = $control[commentForm]}
+	{control $form begin}
+		<!-- hidden fields -->
+		<div n:foreach="$form->getComponents(TRUE, 'Nette\Forms\Controls\HiddenField') as $control">{$control->control}</div>
+		<!-- errors -->
+		{assign errors => $form->errors}
+		<ul class="error" n:if="$errors" n:block="#errors">
+			<li n:foreach="$errors as $error">{$error}</li>
+		</ul>
+		<div n:foreach="$form->controls as $control" n:if="!$control->getOption('rendered') && $control->getForm(FALSE) === $form" class="control">
+			<div>{if $control instanceof Button || $control instanceof Checkbox}&nbsp;{else}{!$control->label}{/if}</div>
+			<div>{!$control->control}{if $control instanceof Checkbox}{!$control->label}{/if}</div>
+        </div>
+	{control $form end}
+</div>
